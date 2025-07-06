@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chúc mừng sinh nhật!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top left, #ffe6f0, #ffe7ba, #f9d5ec);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .card {
+      width: 380px;
+      height: 550px;
+      perspective: 1200px;
+      cursor: pointer;
+      position: relative;
+      border-radius: 30px;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      position: relative;
+      z-index: 2;
+    }
+    .card.open .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 30px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-front {
+      background: #fff0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      color: #ff3f6c;
+    }
+    .card-back {
+      background: #fffafc;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      overflow-y: auto;
+      text-align: center;
+    }
+    .card-back h2 {
+      font-size: 1.05em;
+      color: #ff6f61;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    .card-back img {
+      width: 180px;
+      border-radius: 15px;
+      margin-top: 15px;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.7);
+    }
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: url('heart.png') no-repeat center/contain;
+    }
+    @keyframes circle {
+      from { transform: rotate(0deg) translateX(210px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(210px) rotate(-360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" onclick="toggleCard()">
+    <div class="card-inner">
+      <div class="card-front">
+        Nhấn mở thiệp 🎉
+      </div>
+      <div class="card-back">
+        <h2>
+          Chúc Mừng Sinh Nhật Đại Ka Của Bin Nhá<br><br>
+          Hôm nay là một ngày vô cùng quan trọng mà bin khờ lại quơn mất ước gì giờ có cỗ máy thời gian là bin quay lại thời gian úp mặt zô gối kỉm điểm lại bản thân mất thui.<br><br>
+          Chúc đại ka sinh nhật zui zẻ nhá. Mong cho sức khỏe má đại ka hồi phục nhanh chóng để có thể quay lại bình thường.<br><br>
+          Năm sau cũng là một năm quan trọng với đại ka, chúc đại ka năm sau sẽ đạt được điểm số cao đạt được trường mình mong mún nhó. Hem có tự ti nữa và ngủ sớm, ăn đúng bữa để tránh kiệt sức và đau dạ dày, sức khỏe cải thiện hơn.<br><br>
+          Bin khờ hết văn òi<br><br>
+          ĐẠI KA ĐỪNG BÙN BIN NHÁ BIN XIN LŨI NHÌU Ạ<br><br>
+          KÍ TÊN<br>
+          BIN KHỜ QUÁ KHỜ
+        </h2>
+        <img src="7aa48bc2-2678-4ca4-8624-105f62472ffa.png" alt="Ảnh bạn gửi thêm">
+      </div>
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="fd1b9708-dbb2-4301-af3b-1ce7184683cb.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  </audio>
+
+  <script>
+    let isOpen = false;
+    function toggleCard() {
+      const card = document.querySelector('.card');
+      card.classList.toggle('open');
+      isOpen = !isOpen;
+    }
+    function createHeart() {
+      if (!isOpen) return;
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.top = '50%';
+      heart.style.left = '50%';
+      heart.style.animation = 'circle 4s linear infinite';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
